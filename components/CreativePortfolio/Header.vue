@@ -23,7 +23,7 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 order-last order-lg-0">
           <p>Your vision is our priority. We assist you through the entire eyewear journey—eye testing, choosing frames, lenses, and after-care—always taking initiative and ensuring you receive solutions tailored to your comfort and lifestyle.</p>
         </div>
         <div class="col-lg-10 offset-lg-1">
