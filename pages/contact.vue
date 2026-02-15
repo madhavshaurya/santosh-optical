@@ -17,7 +17,13 @@
 <script setup>
 //= Page Head
 useHead({
-  titleTemplate: `%s - Contact`,
+  titleTemplate: `%s - Contact Santosh Optical`,
+  meta: [
+    {
+      name: 'description',
+      content: 'Contact Santosh Optical in Patna for appointments, inquiries about eye glasses, contact lenses, or any eye care services.'
+    }
+  ],
   bodyAttrs: {
     class: 'main-bg'
   },

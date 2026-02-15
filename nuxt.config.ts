@@ -31,16 +31,28 @@ export default defineNuxtConfig({
         },
         {
           name: 'keywords',
-          content: 'Best Optical Store in Patna, Eye glasses, Contact lenses, Sunglasses, Eye care'
+          content: 'Best Optical Store in Patna, Eye glasses, Contact lenses, Sunglasses, Eye care, Santosh Optical, Patna Optician'
         },
         {
           name: 'description',
-          content: 'Santosh Optical - Optical Store in Patna'
+          content: 'Santosh Optical - The best optical store in Patna. Discover a wide range of premium eye glasses, contact lenses, and sunglasses. Expert eye care services available.'
         },
         {
           name: 'author',
           content: 'Santosh Optical'
-        }
+        },
+        // Open Graph / Facebook
+        { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: 'https://santoshoptical.com/' },
+        { property: 'og:title', content: 'Santosh Optical - Best Optical Store in Patna' },
+        { property: 'og:description', content: 'Discover premium eyewear and expert eye care at Santosh Optical, Patna. Best collection of glasses and lenses.' },
+        { property: 'og:image', content: 'https://santoshoptical.com/assets/imgs/logo-light.png' },
+        // Twitter
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:url', content: 'https://santoshoptical.com/' },
+        { name: 'twitter:title', content: 'Santosh Optical - Best Optical Store in Patna' },
+        { name: 'twitter:description', content: 'Discover premium eyewear and expert eye care at Santosh Optical, Patna.' },
+        { name: 'twitter:image', content: 'https://santoshoptical.com/assets/imgs/logo-light.png' }
       ],
       "link": [
         { rel: 'shortcut icon', href: '/assets/imgs/favicon.ico' },
