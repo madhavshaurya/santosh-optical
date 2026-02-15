@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "img": "/assets/imgs/blog/b5.jpg",
+    "date": {
+      "day": "7",
+      "month": "November"
+    },
+    "category": "Eye Care Tips",
+    "title": "How to Choose the Right Eyeglass Lenses for Clearer, More Comfortable Vision",
+    "link": "/blog-details"
+  },
+  {
+    "id": 2,
+    "img": "/assets/imgs/blog/b6.jpg",
+    "date": {
+      "day": "15",
+      "month": "November"
+    },
+    "category": "Eyewear Guide",
+    "title": "The Complete Guide to Selecting Frames That Match Your Face Shape",
+    "link": "/blog-details"
+  }
+]

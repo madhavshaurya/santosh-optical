@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "quote": "Santosh Optical provided me with one of the most accurate eye tests I’ve ever had. The team guided me patiently and helped me pick the perfect pair of glasses.",
+    "author": "Rakesh Kumar",
+    "client": "Local Resident"
+  },
+  {
+    "id": 2,
+    "quote": "Their collection of frames is excellent and reasonably priced. I found a stylish pair that suits me perfectly. The service was quick and professional.",
+    "author": "Aditya Raj",
+    "client": "College Student"
+  },
+  {
+    "id": 3,
+    "quote": "I got my contact lenses fitted here, and the staff explained everything clearly. The comfort and quality are exceptional. Highly recommended for eye care.",
+    "author": "Amit Verma",
+    "client": "Regular Visitor"
+  },
+  {
+    "id": 4,
+    "quote": "From eye testing to frame selection, the entire process was smooth and pleasant. Santosh Optical really stands out for its customer-friendly approach.",
+    "author": "Priya Sharma",
+    "client": "Happy Customer"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "Vikas Kumar",
+    "role": "Co-Founder",
+    "image": "/assets/imgs/team/t1.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Manish Kumar",
+    "role": "Co-Founder",
+    "image": "/assets/imgs/team/t2.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Rakesh Kumar",
+    "role": "Co-Founder",
+    "image": "/assets/imgs/team/t3.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Shaurya Madhav",
+    "role": "Web Developer",
+    "image": "/assets/imgs/team/t4.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Manas Krishna",
+    "role": "Marketing Intern",
+    "image": "/assets/imgs/team/t5.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Raushan Kumar",
+    "role": "Sales Head",
+    "image": "/assets/imgs/team/t6.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Aakash",
+    "role": "Sales",
+    "image": "/assets/imgs/team/t7.jpg"
+  }
+]

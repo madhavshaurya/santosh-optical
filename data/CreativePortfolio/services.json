@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "numb": "01",
+    "title": "Computerized Eye Testing",
+    "icon": "/assets/imgs/serv-icons/0.png",
+    "content": "We provide accurate digital eye exams using modern diagnostic tools, ensuring precise prescriptions and optimal vision clarity."
+  },
+  {
+    "id": 2,
+    "numb": "02",
+    "title": "Prescription Eyewear",
+    "icon": "/assets/imgs/serv-icons/1.png",
+    "content": "Explore a curated selection of frames and lenses tailored to your comfort, lifestyle, and personal style preferences."
+  },
+  {
+    "id": 3,
+    "numb": "03",
+    "title": "Contact Lens Fitting",
+    "icon": "/assets/imgs/serv-icons/2.png",
+    "content": "From daily to monthly lenses, we guide you in choosing comfortable, high-quality contact lenses suited to your vision needs."
+  },
+  {
+    "id": 4,
+    "numb": "04",
+    "title": "Sunglasses & Protection",
+    "icon": "/assets/imgs/serv-icons/0.png",
+    "content": "Discover premium UV-protected sunglasses designed to offer exceptional eye safety with stylish, everyday wear options."
+  }
+]

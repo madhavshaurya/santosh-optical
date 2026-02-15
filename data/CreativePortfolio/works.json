@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "img": "/assets/imgs/works/full/1.jpg",
+    "category": "Ray-Ban • Wayfarer",
+    "title": "Classic Ray-Ban Wayfarer RX",
+    "link": "/project1"
+  },
+  {
+    "id": 2,
+    "img": "/assets/imgs/works/full/2.jpg",
+    "category": "Burberry • Full-Rim",
+    "title": "Burberry Signature Full-Rim Frame",
+    "link": "/project1"
+  },
+  {
+    "id": 3,
+    "img": "/assets/imgs/works/full/3.jpg",
+    "category": "Armani Exchange • Rimless",
+    "title": "Armani Exchange Lightweight Rims",
+    "link": "/project1"
+  },
+  {
+    "id": 4,
+    "img": "/assets/imgs/works/full/4.jpg",
+    "category": "Tommy Hilfiger • Aviator",
+    "title": "Tommy Hilfiger Premium Aviator",
+    "link": "/project1"
+  },
+  {
+    "id": 5,
+    "img": "/assets/imgs/works/full/5.jpg",
+    "category": "Ray-Ban • Round Metal",
+    "title": "Ray-Ban Metal Sunglasses",
+    "link": "/project1"
+  },
+  {
+    "id": 6,
+    "img": "/assets/imgs/works/full/6.jpg",
+    "category": "Burberry • Rectangle",
+    "title": "Burberry Modern Rectangle Frame",
+    "link": "/project1"
+  }
+]

@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "image": "/assets/imgs/works/full/1.jpg",
+    "link": "/project1",
+    "title": "Classic Wayfarer RX",
+    "category": "Ray-Ban"
+  },
+  {
+    "id": 2,
+    "image": "/assets/imgs/works/full/2.jpg",
+    "link": "/project1",
+    "title": "Full-Rim Frame",
+    "category": "Burberry"
+  },
+  {
+    "id": 3,
+    "image": "/assets/imgs/works/full/3.jpg",
+    "link": "/project1",
+    "title": "Lightweight Rims",
+    "category": "Armani Exchange"
+  },
+  {
+    "id": 4,
+    "image": "/assets/imgs/works/full/4.jpg",
+    "link": "/project1",
+    "title": "Premium Aviator",
+    "category": "Tommy Hilfiger"
+  },
+  {
+    "id": 5,
+    "image": "/assets/imgs/works/full/5.jpg",
+    "link": "/project1",
+    "title": "Metal Sunglasses",
+    "category": "Ray-Ban"
+  },
+  {
+    "id": 6,
+    "image": "/assets/imgs/works/full/6.jpg",
+    "link": "/project1",
+    "title": "Rectangle Frame",
+    "category": "Burberry"
+  },
+  {
+    "id": 7,
+    "image": "/assets/imgs/works/full/7.jpg",
+    "link": "/project1",
+    "title": "Round Unisex Sunglasses",
+    "category": "FastTrack"
+  },
+  {
+    "id": 8,
+    "image": "/assets/imgs/works/full/8.jpg",
+    "link": "/project1",
+    "title": "Aesthetic Sunglasses",
+    "category": "PRADA"
+  },
+  {
+    "id": 9,
+    "image": "/assets/imgs/works/full/9.jpg",
+    "link": "/project1",
+    "title": "Cyberpunk Shades",
+    "category": "Oakley"
+  }
+]

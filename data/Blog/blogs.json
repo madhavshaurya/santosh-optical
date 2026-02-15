@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "title": "How to Choose the Right Lenses for Your Lifestyle",
+    "category": "Eye Care Tips",
+    "image": "/assets/imgs/blog/b7.jpg",
+    "date": {
+      "day": "07",
+      "month": "November"
+    },
+    "link": "/blog-details"
+  },
+  {
+    "id": 2,
+    "title": "Blue Light Lenses: Do You Really Need Them?",
+    "category": "Eyewear Guide",
+    "image": "/assets/imgs/blog/b2.jpg",
+    "date": {
+      "day": "15",
+      "month": "November"
+    },
+    "link": "/blog-details"
+  },
+  {
+    "id": 3,
+    "title": "Signs You Should Get an Eye Test Right Away",
+    "category": "Vision Health",
+    "date": "28 October",
+    "link": "/blog-details"
+  },
+  {
+    "id": 4,
+    "title": "How to Care for Your New Prescription Glasses",
+    "category": "Care & Maintenance",
+    "image": "/assets/imgs/blog/b5.jpg",
+    "date": {
+      "day": "18",
+      "month": "September"
+    },
+    "link": "/blog-details"
+  },
+  {
+    "id": 5,
+    "title": "Sunglasses: Protecting Eyes from UV All Year Round",
+    "category": "Eye Safety",
+    "image": "/assets/imgs/blog/b4.jpg",
+    "date": {
+      "day": "03",
+      "month": "November"
+    },
+    "link": "/blog-details"
+  },
+  {
+    "id": 6,
+    "title": "Contact Lens Care: Tips for Comfort and Safety",
+    "category": "Contact Lenses",
+    "image": "/assets/imgs/blog/b6.jpg",
+    "date": {
+      "day": "15",
+      "month": "August"
+    },
+    "link": "/blog-details"
+  },
+  {
+    "id": 7,
+    "title": "Children’s Eye Health: When to Visit an Optometrist",
+    "category": "Kids' Vision",
+    "image": "/assets/imgs/blog/b1.jpg",
+    "date": {
+      "day": "07",
+      "month": "August"
+    },
+    "link": "/blog-details"
+  },
+  {
+    "id": 8,
+    "title": "Frame Styles That Flatter Different Face Shapes",
+    "category": "Style & Fit",
+    "date": "12 October",
+    "link": "/blog-details"
+  },
+  {
+    "id": 9,
+    "title": "Choosing Anti-Glare Coatings for Screen Work",
+    "category": "Workplace Vision",
+    "image": "/assets/imgs/blog/b3.jpg",
+    "date": {
+      "day": "22",
+      "month": "August"
+    },
+    "link": "/blog-details"
+  }
+]
