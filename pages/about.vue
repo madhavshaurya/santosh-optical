@@ -8,7 +8,7 @@
         <AboutHeader />
         <AboutIntro />
         <AboutVideo />
-        <AboutTeam />
+        <!-- <AboutTeam /> -->
         <AboutTestimonials />
       </main>
       <CommonFooter1 />
