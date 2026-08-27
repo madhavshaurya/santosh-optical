@@ -7,11 +7,17 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
 //= Scripts
 import scrollToTop from '@/common/scrollToTop';
 
+let cleanupScroll;
+
 onMounted(() => {
-  scrollToTop();
+  cleanupScroll = scrollToTop();
+});
+
+onUnmounted(() => {
+  if (cleanupScroll) cleanupScroll();
 });
 </script>

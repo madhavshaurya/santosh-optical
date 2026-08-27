@@ -1,0 +1,3 @@
+## 2025-05-18 - Throttle Scroll Listeners and Cleanup Event Listeners in Vue Nuxt
+**Learning:** Legacy UI scripts that bind `window.addEventListener('scroll', ...)` directly without throttling cause layout thrashing and high CPU usage during rapid scroll events. They also leak memory across client-side route transitions when not cleaned up in Vue `onUnmounted` lifecycle hook.
+**Action:** Always throttle scroll listeners using `requestAnimationFrame`, combine multiple scroll listeners into a single passive listener, cache DOM element queries, and return a cleanup function to be called in `onUnmounted`.
