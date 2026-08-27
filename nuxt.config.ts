@@ -12,6 +12,9 @@ export default defineNuxtConfig({
     }
   },
   nitro: {},
+  routeRules: {
+    '/verify': { ssr: false }
+  },
   app: {
     head: {
       title: "Santosh Optical - Optical Store",
