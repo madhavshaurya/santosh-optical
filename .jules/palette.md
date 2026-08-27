@@ -1,0 +1,3 @@
+## 2025-05-18 - Floating Action Buttons and Overlay Modals Accessibility
+**Learning:** In Nuxt/Vue applications using floating interactive widgets (like `<ClientOnly>` coupon popups), non-semantic `<div>` buttons fail keyboard navigation and screen reader tab stops. Converting interactive elements to native `<button type="button">`, pairing modal overlays with `role="dialog"`, `aria-modal="true"`, `aria-live="polite"`, and registering a global `Escape` keydown handler enables seamless keyboard and screen reader accessibility without layout regression.
+**Action:** Always check floating widgets and modals for native `<button>` markup, ARIA labels, focus-visible states, and `Escape` key close handlers.
