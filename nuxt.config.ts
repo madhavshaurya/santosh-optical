@@ -11,7 +11,11 @@ export default defineNuxtConfig({
       formspreeId: process.env.NUXT_PUBLIC_FORMSPREE_ID,
     }
   },
-  nitro: {},
+  nitro: {
+    output: {
+      publicDir: 'dist'
+    }
+  },
   app: {
     head: {
       title: "Santosh Optical - Optical Store",
