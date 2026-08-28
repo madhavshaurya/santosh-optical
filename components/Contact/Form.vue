@@ -10,7 +10,11 @@
             </div>
 
             <!-- messages will be rendered here -->
-            <div class="messages" v-html="responseHtml"></div>
+            <div v-if="responseMessage" class="messages">
+              <div :class="['alert', isSuccess ? 'alert-success' : 'alert-danger']">
+                {{ responseMessage }}
+              </div>
+            </div>
 
             <!-- form -->
             <form id="contact-form" @submit.prevent="onSubmit" novalidate>
@@ -96,19 +100,22 @@ const form = reactive({
   _gotcha: '' // honeypot
 })
 
-const responseHtml = ref('')
+const responseMessage = ref('')
+const isSuccess = ref(false)
 const submitting = ref(false)
 
 // basic client-side validation
 function validate() {
   if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
-    responseHtml.value = '<div class="alert alert-danger">Please fill in all required fields.</div>'
+    responseMessage.value = 'Please fill in all required fields.'
+    isSuccess.value = false
     return false
   }
   // simple email regex
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   if (!emailRe.test(form.email)) {
-    responseHtml.value = '<div class="alert alert-danger">Please enter a valid email address.</div>'
+    responseMessage.value = 'Please enter a valid email address.'
+    isSuccess.value = false
     return false
   }
   return true
@@ -116,12 +123,14 @@ function validate() {
 
 async function onSubmit() {
   // clear previous message
-  responseHtml.value = ''
+  responseMessage.value = ''
+  isSuccess.value = false
 
   // prevent bot submission via honeypot
   if (form._gotcha) {
     // silently ignore
-    responseHtml.value = '<div class="alert alert-danger">Spam detected.</div>'
+    responseMessage.value = 'Spam detected.'
+    isSuccess.value = false
     return
   }
 
@@ -150,7 +159,8 @@ async function onSubmit() {
     const json = await res.json().catch(() => ({}))
 
     if (res.ok) {
-      responseHtml.value = '<div class="alert alert-success">Message sent — thank you! We will get back to you shortly.</div>'
+      responseMessage.value = 'Message sent — thank you! We will get back to you shortly.'
+      isSuccess.value = true
       // clear form
       form.name = ''
       form.email = ''
@@ -158,11 +168,13 @@ async function onSubmit() {
     } else {
       // Formspree returns { error: "..." } for validation errors
       const err = json?.error || 'Submission failed. Please try again later.'
-      responseHtml.value = `<div class="alert alert-danger">${err}</div>`
+      responseMessage.value = String(err)
+      isSuccess.value = false
     }
   } catch (err) {
     console.error(err)
-    responseHtml.value = '<div class="alert alert-danger">An error occurred while sending your message. Please try again later.</div>'
+    responseMessage.value = 'An error occurred while sending your message. Please try again later.'
+    isSuccess.value = false
   } finally {
     submitting.value = false
   }
