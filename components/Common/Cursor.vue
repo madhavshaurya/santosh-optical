@@ -3,14 +3,20 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
+
+let cleanups = [];
 
 onMounted(() => {
   const link = document.querySelectorAll('.hover-this');
   const cursor = document.querySelector('.cursor');
 
+  if (!cursor) return;
+
   const animateit = function (e) {
     const hoverAnim = this.querySelector('.hover-anim');
+    if (!hoverAnim) return;
+
     const { offsetX: x, offsetY: y } = e;
     const { offsetWidth: width, offsetHeight: height } = this;
     const move = 25;
@@ -26,17 +32,40 @@ onMounted(() => {
     cursor.style.left = x + 'px';
     cursor.style.top = y + 'px';
   };
-  link.forEach(b => b.addEventListener('mousemove', animateit));
-  link.forEach(b => b.addEventListener('mouseleave', animateit));
-  window.addEventListener('mousemove', editCursor);
 
-  document.querySelectorAll("a, .cursor-pointer").forEach(el => {
-    el.addEventListener('mousemove', () => {
-      cursor.classList.add('cursor-active')
-    });
-    el.addEventListener('mouseleave', () => {
-      cursor.classList.remove('cursor-active')
+  link.forEach(b => {
+    b.addEventListener('mousemove', animateit);
+    b.addEventListener('mouseleave', animateit);
+    cleanups.push(() => {
+      b.removeEventListener('mousemove', animateit);
+      b.removeEventListener('mouseleave', animateit);
     });
   });
+
+  window.addEventListener('mousemove', editCursor);
+  cleanups.push(() => {
+    window.removeEventListener('mousemove', editCursor);
+  });
+
+  const interactiveElements = document.querySelectorAll("a, .cursor-pointer");
+  interactiveElements.forEach(el => {
+    const handleMouseEnter = () => cursor.classList.add('cursor-active');
+    const handleMouseLeave = () => cursor.classList.remove('cursor-active');
+
+    // Optimization: Use mouseenter instead of mousemove to set active state once per hover
+    el.addEventListener('mouseenter', handleMouseEnter);
+    el.addEventListener('mouseleave', handleMouseLeave);
+
+    cleanups.push(() => {
+      el.removeEventListener('mouseenter', handleMouseEnter);
+      el.removeEventListener('mouseleave', handleMouseLeave);
+    });
+  });
+});
+
+// Clean up event listeners on unmount to prevent memory leaks and redundant mousemove handler execution
+onUnmounted(() => {
+  cleanups.forEach(cleanup => cleanup());
+  cleanups = [];
 });
 </script>
