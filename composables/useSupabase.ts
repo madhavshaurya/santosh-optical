@@ -4,7 +4,7 @@ export default () => {
   const config = useRuntimeConfig()
 
   return createClient(
-    config.public.supabaseUrl,
-    config.public.supabaseAnonKey
+    config.public.supabaseUrl || 'https://placeholder.supabase.co',
+    config.public.supabaseAnonKey || 'placeholder-anon-key'
   )
 }
