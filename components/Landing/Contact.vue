@@ -9,7 +9,9 @@
               <h3 class="text-u f-bold fz-50">Get In <span class="f-ultra-light">Touch</span>.</h3>
             </div>
             <div class="full-width">
-              <div v-if="responseHtml" class="messages" v-html="responseHtml"></div>
+              <div v-if="responseMessage" class="messages">
+                <div :class="responseClass">{{ responseMessage }}</div>
+              </div>
               <form id="contact-form" @submit.prevent="onSubmit" novalidate>
                 <div class="controls row">
                   <div class="col-lg-6">
@@ -63,23 +65,27 @@ const form = reactive({
 })
 
 const submitting = ref(false)
-const responseHtml = ref('')
+const responseMessage = ref('')
+const responseClass = ref('')
 
 function validate() {
   if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
-    responseHtml.value = '<div class="alert alert-danger">Please fill in all fields.</div>'
+    responseMessage.value = 'Please fill in all fields.'
+    responseClass.value = 'alert alert-danger'
     return false
   }
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   if (!emailRe.test(form.email)) {
-    responseHtml.value = '<div class="alert alert-danger">Please enter a valid email.</div>'
+    responseMessage.value = 'Please enter a valid email.'
+    responseClass.value = 'alert alert-danger'
     return false
   }
   return true
 }
 
 async function onSubmit() {
-  responseHtml.value = ''
+  responseMessage.value = ''
+  responseClass.value = ''
   if (form._gotcha) return
   if (!validate()) return
 
@@ -99,16 +105,19 @@ async function onSubmit() {
     })
 
     if (res.ok) {
-      responseHtml.value = '<div class="alert alert-success">Message sent successfully!</div>'
+      responseMessage.value = 'Message sent successfully!'
+      responseClass.value = 'alert alert-success'
       form.name = ''
       form.email = ''
       form.message = ''
     } else {
-      responseHtml.value = '<div class="alert alert-danger">Failed to send. Please try again.</div>'
+      responseMessage.value = 'Failed to send. Please try again.'
+      responseClass.value = 'alert alert-danger'
     }
   } catch (err) {
     console.error(err)
-    responseHtml.value = '<div class="alert alert-danger">An error occurred.</div>'
+    responseMessage.value = 'An error occurred.'
+    responseClass.value = 'alert alert-danger'
   } finally {
     submitting.value = false
   }

@@ -11,7 +11,9 @@
 
       <div class="row justify-content-center">
         <div class="col-lg-10">
-          <div class="messages" v-html="responseHtml"></div>
+          <div v-if="responseMessage" class="messages">
+            <div :class="responseClass">{{ responseMessage }}</div>
+          </div>
 
           <form id="comment-form" @submit.prevent="onSubmit" novalidate>
             <div class="controls row">
@@ -80,27 +82,32 @@ const form = reactive({
 })
 
 const submitting = ref(false)
-const responseHtml = ref("")
+const responseMessage = ref('')
+const responseClass = ref('')
 
 function validate() {
   if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
-    responseHtml.value = '<div class="alert alert-danger">Please fill in all fields.</div>'
+    responseMessage.value = 'Please fill in all fields.'
+    responseClass.value = 'alert alert-danger'
     return false
   }
   const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   if (!emailRe.test(form.email)) {
-    responseHtml.value = '<div class="alert alert-danger">Please enter a valid email address.</div>'
+    responseMessage.value = 'Please enter a valid email address.'
+    responseClass.value = 'alert alert-danger'
     return false
   }
   return true
 }
 
 async function onSubmit() {
-  responseHtml.value = ""
+  responseMessage.value = ''
+  responseClass.value = ''
 
   // Honeypot trap
   if (form._gotcha) {
-    responseHtml.value = '<div class="alert alert-danger">Spam detected.</div>'
+    responseMessage.value = 'Spam detected.'
+    responseClass.value = 'alert alert-danger'
     return
   }
 
@@ -125,18 +132,20 @@ async function onSubmit() {
     const json = await res.json().catch(() => ({}))
 
     if (res.ok) {
-      responseHtml.value = '<div class="alert alert-success">Your comment has been posted successfully.</div>'
+      responseMessage.value = 'Your comment has been posted successfully.'
+      responseClass.value = 'alert alert-success'
       form.name = ""
       form.email = ""
       form.message = ""
     } else {
-      const err = json?.error || "Something went wrong. Please try again."
-      responseHtml.value = `<div class="alert alert-danger">${err}</div>`
+      responseMessage.value = json?.error || "Something went wrong. Please try again."
+      responseClass.value = 'alert alert-danger'
     }
 
   } catch (error) {
     console.error(error)
-    responseHtml.value = '<div class="alert alert-danger">An error occurred. Please try again later.</div>'
+    responseMessage.value = 'An error occurred. Please try again later.'
+    responseClass.value = 'alert alert-danger'
   } finally {
     submitting.value = false
   }
