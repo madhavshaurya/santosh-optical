@@ -126,10 +126,6 @@ const verifyCoupon = async () => {
   }
 
   try {
-    if (!supabase) {
-      throw new Error('Supabase client not configured.')
-    }
-
     const { data, error } = await supabase
       .from('coupons')
       .select('*')
@@ -164,31 +160,20 @@ const updateStatus = async (status) => {
   if (!couponData.value || actionLoading.value) return
 
   actionLoading.value = true
-  try {
-    if (!supabase) {
-      throw new Error('Supabase client not configured.')
-    }
+  const { error } = await supabase
+    .from('coupons')
+    .update({ is_used: status })
+    .eq('coupon_code', couponData.value.coupon_code)
 
-    const { error } = await supabase
-      .from('coupons')
-      .update({ is_used: status })
-      .eq('coupon_code', couponData.value.coupon_code)
-
-    if (error) {
-      message.value = `Error updating coupon: ${error.message}`
-      messageType.value = 'error'
-    } else {
-      couponData.value.is_used = status
-      message.value = status ? '✅ Coupon marked as USED.' : '✅ Coupon has been RESET and can be used again.'
-      messageType.value = 'success'
-    }
-  } catch (err) {
-    message.value = `Error updating coupon: ${err.message || err}`
+  if (error) {
+    message.value = `Error updating coupon: ${error.message}`
     messageType.value = 'error'
-  } finally {
-    actionLoading.value = false
+  } else {
+    couponData.value.is_used = status
+    message.value = status ? '✅ Coupon marked as USED.' : '✅ Coupon has been RESET and can be used again.'
+    messageType.value = 'success'
   }
-
+  actionLoading.value = false
 }
 </script>
 

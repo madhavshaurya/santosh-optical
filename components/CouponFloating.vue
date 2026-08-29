@@ -37,7 +37,7 @@
           </div>
 
           <div v-else-if="coupon" class="coupon-container">
-            <p class="code" aria-label="Coupon Code">{{ coupon }}</p>
+            <p class="code">{{ coupon }}</p>
             <button
               type="button"
               class="copy-box"
