@@ -106,10 +106,12 @@ const getOrCreateCoupon = async () => {
       return
     }
 
-    // 2️⃣ Generate new coupon
-    const newCoupon =
-      'SANTOSH-' +
-      Math.random().toString(36).substring(2, 7).toUpperCase()
+    // 2️⃣ Generate new coupon securely using Web Crypto API
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+    const randomBytes = new Uint8Array(5)
+    crypto.getRandomValues(randomBytes)
+    const secureCode = Array.from(randomBytes, byte => chars[byte % chars.length]).join('')
+    const newCoupon = 'SANTOSH-' + secureCode
 
     const { error } = await supabase.from('coupons').insert({
       coupon_code: newCoupon,
