@@ -2,16 +2,27 @@
   <ClientOnly>
     <div class="coupon-root">
       <!-- Floating Button -->
-      <div class="coupon-float" @click="handleClick">
+      <button
+        class="coupon-float"
+        aria-label="Generate Your Coupon"
+        @click="handleClick"
+      >
         🎁 Generate Your Coupon
-      </div>
+      </button>
 
       <!-- Modal -->
-      <div v-if="showModal" class="coupon-overlay" @click.self="closeModal">
+      <div
+        v-if="showModal"
+        class="coupon-overlay"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="coupon-title"
+        @click.self="closeModal"
+      >
         <div class="coupon-modal">
-          <button class="close" @click="closeModal">×</button>
+          <button class="close" aria-label="Close coupon modal" @click="closeModal">×</button>
 
-          <h3>Your Coupon Code</h3>
+          <h3 id="coupon-title">Your Coupon Code</h3>
 
           <div v-if="loading" class="loading">
             Generating coupon…
@@ -19,10 +30,14 @@
 
           <div v-else-if="coupon" class="coupon-container">
             <p class="code">{{ coupon }}</p>
-            <div class="copy-box" @click="copyToClipboard">
+            <button
+              class="copy-box"
+              :aria-label="copied ? 'Coupon code copied' : 'Copy coupon code to clipboard'"
+              @click="copyToClipboard"
+            >
               <span v-if="!copied">📋 Copy Code</span>
               <span v-else>✅ Copied!</span>
-            </div>
+            </button>
             <p class="hint">Show this code at Santosh Optical</p>
           </div>
 
@@ -36,7 +51,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 
 /* -----------------------------
    State
@@ -60,7 +75,19 @@ onMounted(() => {
     browserUUID = crypto.randomUUID()
     localStorage.setItem('coupon_uuid', browserUUID)
   }
+
+  window.addEventListener('keydown', handleKeydown)
 })
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeydown)
+})
+
+const handleKeydown = (e) => {
+  if (e.key === 'Escape' && showModal.value) {
+    closeModal()
+  }
+}
 
 /* -----------------------------
    UI Handlers
@@ -147,6 +174,7 @@ const getOrCreateCoupon = async () => {
   color: #fff;
   padding: 14px 20px;
   border-radius: 30px;
+  border: none;
   cursor: pointer;
   z-index: 99999;
   font-family: Arial, sans-serif;
@@ -212,6 +240,7 @@ const getOrCreateCoupon = async () => {
   font-size: 13px;
   background: #000;
   color: #fff;
+  border: none;
   display: inline-block;
   padding: 6px 12px;
   border-radius: 4px;
