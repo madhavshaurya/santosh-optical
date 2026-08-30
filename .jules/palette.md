@@ -1,0 +1,3 @@
+## 2024-08-30 - Modal Dialog Accessibility and Semantic Buttons
+**Learning:** Clickable `<div>` elements used for floating action triggers and modal buttons prevent keyboard navigation and lack screen reader semantics. Replacing them with native `<button>` elements, adding modal dialog ARIA attributes (`role="dialog"`, `aria-modal="true"`, `aria-labelledby`), and providing Escape key dismiss handlers significantly improves accessibility.
+**Action:** Always use native `<button>` elements for interactive controls, specify proper ARIA roles for modal dialogs, and ensure Escape key dismiss handlers are added.
