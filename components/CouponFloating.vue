@@ -87,6 +87,18 @@ const copyToClipboard = () => {
 /* -----------------------------
    Coupon Logic
 ------------------------------ */
+// Secure coupon code generator using Web Crypto API to prevent predictability attacks
+const generateSecureCouponCode = () => {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+  const randomValues = new Uint8Array(5)
+  crypto.getRandomValues(randomValues)
+  let result = ''
+  for (let i = 0; i < randomValues.length; i++) {
+    result += chars[randomValues[i] % chars.length]
+  }
+  return `SANTOSH-${result}`
+}
+
 const getOrCreateCoupon = async () => {
   if (!supabase || !browserUUID) return
 
@@ -106,10 +118,8 @@ const getOrCreateCoupon = async () => {
       return
     }
 
-    // 2️⃣ Generate new coupon
-    const newCoupon =
-      'SANTOSH-' +
-      Math.random().toString(36).substring(2, 7).toUpperCase()
+    // 2️⃣ Generate new coupon securely
+    const newCoupon = generateSecureCouponCode()
 
     const { error } = await supabase.from('coupons').insert({
       coupon_code: newCoupon,
