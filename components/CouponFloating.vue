@@ -5,7 +5,6 @@
       <button
         type="button"
         class="coupon-float"
-        aria-label="Generate or view discount coupon"
         @click="handleClick"
       >
         🎁 Generate Your Coupon
@@ -35,7 +34,7 @@
           </div>
 
           <div v-else-if="coupon" class="coupon-container">
-            <p class="code" aria-label="Coupon code">{{ coupon }}</p>
+            <p class="code">{{ coupon }}</p>
             <button
               type="button"
               class="copy-box"

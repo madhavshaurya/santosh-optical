@@ -1,0 +1,4 @@
+## 2025-05-15 - Interactive Custom UI & Dialog Accessibility
+
+**Learning:** When turning floating widgets or custom modal overlays into accessible UI components, converting non-semantic `<div>` elements into semantic `<button>` elements, providing dialog semantics (`role="dialog"`, `aria-modal="true"`, `aria-labelledby`), handling `Escape` key dismissal with proper listener cleanup, and adding `:focus-visible` states dramatically improves keyboard and screen-reader navigation. Do not place `aria-label` on textual nodes like `<p>` containing dynamic content as it overrides screen reader text readout.
+**Action:** Always use semantic `<button>` tags for interactive triggers, avoid `aria-label` on content text nodes, ensure `Escape` closes modals, and check `netlify.toml` build commands align with `pnpm generate` for Nuxt static deployments.
