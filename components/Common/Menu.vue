@@ -63,24 +63,25 @@
 
             <div class="bottom">
               <h6 class="text-u fw-600 mb-20">Follow Us</h6>
+              <!-- Use rel="noopener noreferrer" on target="_blank" links to prevent reverse tabnabbing attacks -->
               <ul class="rest social-text d-flex fz-13">
                 <li class="mr-20">
-                  <a href="https://www.facebook.com/" target="_blank" rel="noopener" class="hover-this">
+                  <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="hover-this">
                     <span class="hover-anim">Facebook</span>
                   </a>
                 </li>
                 <li class="mr-20">
-                  <a href="https://x.com/" target="_blank" rel="noopener" class="hover-this">
+                  <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="hover-this">
                     <span class="hover-anim">X</span>
                   </a>
                 </li>
                 <li class="mr-20">
-                  <a href="https://www.linkedin.com/" target="_blank" rel="noopener" class="hover-this">
+                  <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="hover-this">
                     <span class="hover-anim">LinkedIn</span>
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.instagram.com/santoshoptical123/" target="_blank" rel="noopener" class="hover-this">
+                  <a href="https://www.instagram.com/santoshoptical123/" target="_blank" rel="noopener noreferrer" class="hover-this">
                     <span class="hover-anim">Instagram</span>
                   </a>
                 </li>
