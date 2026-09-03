@@ -34,7 +34,8 @@
                   <a href="#0" class="hover-anim">LinkedIn</a>
                 </li>
                 <li class="hover-this cursor-pointer">
-                  <a href="https://www.instagram.com/santoshoptical123/" target="_blank" rel="noopener">Instagram</a>
+                  <!-- Use rel="noopener noreferrer" on target="_blank" links to prevent reverse tabnabbing attacks -->
+                  <a href="https://www.instagram.com/santoshoptical123/" target="_blank" rel="noopener noreferrer">Instagram</a>
                 </li>
               </ul>
             </div>
@@ -73,9 +74,11 @@
                 <p class="fz-13">
                   © {{ new Date().getFullYear() }} {{ contactData.name }}. Made with&nbsp;❤️&nbsp;by&nbsp;
                   <span class="underline">
+                    <!-- Use rel="noopener noreferrer" on target="_blank" links to prevent reverse tabnabbing attacks -->
                     <a
                       href="https://www.linkedin.com/in/shauryamadhav/"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Shaurya Madhav
                     </a>

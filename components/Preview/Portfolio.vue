@@ -7,11 +7,12 @@
             <div class="item">
               <div class="img">
                 <img :src="item.image" alt="" />
-                <a :href="item.link" target="_blank" class="link-overlay"></a>
+                <!-- Use rel="noopener noreferrer" on target="_blank" links to prevent reverse tabnabbing attacks -->
+                <a :href="item.link" target="_blank" rel="noopener noreferrer" class="link-overlay"></a>
               </div>
               <div class="info">
                 <h6>
-                  <a :href="item.link" target="_blank">{{ item.title }}</a>
+                  <a :href="item.link" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
                 </h6>
               </div>
             </div>

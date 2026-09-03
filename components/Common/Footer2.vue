@@ -61,9 +61,11 @@
                 <p class="fz-13">
                   © {{ new Date().getFullYear() }} {{ contactData.name }}. Made with&nbsp;❤️&nbsp;by&nbsp;
                   <span class="underline">
+                    <!-- Use rel="noopener noreferrer" on target="_blank" links to prevent reverse tabnabbing attacks -->
                     <a
                       href="https://themeforest.net/user/UiCamp"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       UiCamp
                     </a>
