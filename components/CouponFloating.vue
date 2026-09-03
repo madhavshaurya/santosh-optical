@@ -2,16 +2,41 @@
   <ClientOnly>
     <div class="coupon-root">
       <!-- Floating Button -->
-      <div class="coupon-float" @click="handleClick">
+      <div
+        class="coupon-float"
+        role="button"
+        tabindex="0"
+        aria-label="Generate Your Coupon"
+        @click="handleClick"
+        @keydown.enter="handleClick"
+        @keydown.space.prevent="handleClick"
+      >
         🎁 Generate Your Coupon
       </div>
 
       <!-- Modal -->
-      <div v-if="showModal" class="coupon-overlay" @click.self="closeModal">
-        <div class="coupon-modal">
-          <button class="close" @click="closeModal">×</button>
+      <div
+        v-if="showModal"
+        class="coupon-overlay"
+        @click.self="closeModal"
+        @keydown.window.esc="closeModal"
+      >
+        <div
+          class="coupon-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="coupon-modal-title"
+        >
+          <button
+            type="button"
+            class="close"
+            aria-label="Close coupon modal"
+            @click="closeModal"
+          >
+            ×
+          </button>
 
-          <h3>Your Coupon Code</h3>
+          <h3 id="coupon-modal-title">Your Coupon Code</h3>
 
           <div v-if="loading" class="loading">
             Generating coupon…
@@ -19,7 +44,15 @@
 
           <div v-else-if="coupon" class="coupon-container">
             <p class="code">{{ coupon }}</p>
-            <div class="copy-box" @click="copyToClipboard">
+            <div
+              class="copy-box"
+              role="button"
+              tabindex="0"
+              aria-label="Copy coupon code"
+              @click="copyToClipboard"
+              @keydown.enter="copyToClipboard"
+              @keydown.space.prevent="copyToClipboard"
+            >
               <span v-if="!copied">📋 Copy Code</span>
               <span v-else>✅ Copied!</span>
             </div>
@@ -152,6 +185,13 @@ const getOrCreateCoupon = async () => {
   font-family: Arial, sans-serif;
   font-size: 14px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.coupon-float:focus-visible,
+.close:focus-visible,
+.copy-box:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
 }
 
 /* Overlay */
