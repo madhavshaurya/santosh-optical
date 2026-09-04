@@ -1,8 +1,12 @@
 [build]
-  command = "npm run generate"
-  publish = "dist"
+  command = "pnpm generate"
+  publish = ".output/public"
+
+[build.environment]
+  NODE_VERSION = "20"
+  PNPM_VERSION = "10.30.3"
 
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/200.html"
   status = 200

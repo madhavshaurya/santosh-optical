@@ -2,31 +2,58 @@
   <ClientOnly>
     <div class="coupon-root">
       <!-- Floating Button -->
-      <div class="coupon-float" @click="handleClick">
+      <button
+        type="button"
+        class="coupon-float"
+        aria-label="Generate Your Coupon"
+        @click="handleClick"
+      >
         🎁 Generate Your Coupon
-      </div>
+      </button>
 
       <!-- Modal -->
-      <div v-if="showModal" class="coupon-overlay" @click.self="closeModal">
-        <div class="coupon-modal">
-          <button class="close" @click="closeModal">×</button>
+      <div
+        v-if="showModal"
+        class="coupon-overlay"
+        @click.self="closeModal"
+        @keydown.esc="closeModal"
+      >
+        <div
+          class="coupon-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="coupon-modal-title"
+        >
+          <button
+            type="button"
+            class="close"
+            aria-label="Close coupon modal"
+            @click="closeModal"
+          >
+            ×
+          </button>
 
-          <h3>Your Coupon Code</h3>
+          <h3 id="coupon-modal-title">Your Coupon Code</h3>
 
-          <div v-if="loading" class="loading">
+          <div v-if="loading" class="loading" aria-live="polite">
             Generating coupon…
           </div>
 
           <div v-else-if="coupon" class="coupon-container">
             <p class="code">{{ coupon }}</p>
-            <div class="copy-box" @click="copyToClipboard">
+            <button
+              type="button"
+              class="copy-box"
+              aria-label="Copy coupon code"
+              @click="copyToClipboard"
+            >
               <span v-if="!copied">📋 Copy Code</span>
               <span v-else>✅ Copied!</span>
-            </div>
+            </button>
             <p class="hint">Show this code at Santosh Optical</p>
           </div>
 
-          <div v-else class="loading">
+          <div v-else class="loading" aria-live="polite">
             Unable to generate coupon
           </div>
         </div>
@@ -145,6 +172,7 @@ const getOrCreateCoupon = async () => {
   right: 20px;
   background: #000;
   color: #fff;
+  border: none;
   padding: 14px 20px;
   border-radius: 30px;
   cursor: pointer;
@@ -152,6 +180,13 @@ const getOrCreateCoupon = async () => {
   font-family: Arial, sans-serif;
   font-size: 14px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.coupon-float:focus-visible,
+.close:focus-visible,
+.copy-box:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
 }
 
 /* Overlay */
@@ -212,6 +247,7 @@ const getOrCreateCoupon = async () => {
   font-size: 13px;
   background: #000;
   color: #fff;
+  border: none;
   display: inline-block;
   padding: 6px 12px;
   border-radius: 4px;
