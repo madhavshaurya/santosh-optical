@@ -106,10 +106,15 @@ const getOrCreateCoupon = async () => {
       return
     }
 
-    // 2️⃣ Generate new coupon
-    const newCoupon =
-      'SANTOSH-' +
-      Math.random().toString(36).substring(2, 7).toUpperCase()
+    // 2️⃣ Generate new coupon securely using CSPRNG
+    const randomBytes = new Uint8Array(5)
+    crypto.getRandomValues(randomBytes)
+    const randomChars = Array.from(randomBytes)
+      .map(b => (b % 36).toString(36))
+      .join('')
+      .toUpperCase()
+
+    const newCoupon = 'SANTOSH-' + randomChars
 
     const { error } = await supabase.from('coupons').insert({
       coupon_code: newCoupon,
