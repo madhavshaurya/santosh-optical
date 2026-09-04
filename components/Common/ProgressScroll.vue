@@ -14,12 +14,19 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
 //= Scripts
 import scrollToTop from '@/common/scrollToTop';
 
+let cleanup;
+
 onMounted(() => {
-  scrollToTop();
+  cleanup = scrollToTop();
+});
+
+// Clean up window scroll and click event listeners when component unmounts
+onUnmounted(() => {
+  if (cleanup) cleanup();
 });
 
 const handleScrollToTop = () => {
