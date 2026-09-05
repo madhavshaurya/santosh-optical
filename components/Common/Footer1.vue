@@ -73,9 +73,11 @@
                 <p class="fz-13">
                   © {{ new Date().getFullYear() }} {{ contactData.name }}. Made with&nbsp;❤️&nbsp;by&nbsp;
                   <span class="underline">
+                    <!-- Security: target="_blank" without rel="noopener noreferrer" exposes against tabnabbing vulnerabilities -->
                     <a
                       href="https://www.linkedin.com/in/shauryamadhav/"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Shaurya Madhav
                     </a>
