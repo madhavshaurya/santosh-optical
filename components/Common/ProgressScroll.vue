@@ -14,12 +14,20 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
 //= Scripts
 import scrollToTop from '@/common/scrollToTop';
 
+let cleanup = null;
+
 onMounted(() => {
-  scrollToTop();
+  cleanup = scrollToTop();
+});
+
+onUnmounted(() => {
+  if (cleanup) {
+    cleanup();
+  }
 });
 
 const handleScrollToTop = () => {
