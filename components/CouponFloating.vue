@@ -2,31 +2,56 @@
   <ClientOnly>
     <div class="coupon-root">
       <!-- Floating Button -->
-      <div class="coupon-float" @click="handleClick">
+      <button
+        type="button"
+        class="coupon-float"
+        aria-label="Generate Your Coupon"
+        @click="handleClick"
+      >
         🎁 Generate Your Coupon
-      </div>
+      </button>
 
       <!-- Modal -->
-      <div v-if="showModal" class="coupon-overlay" @click.self="closeModal">
+      <div
+        v-if="showModal"
+        class="coupon-overlay"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="coupon-modal-title"
+        @click.self="closeModal"
+        @keydown.esc="closeModal"
+      >
         <div class="coupon-modal">
-          <button class="close" @click="closeModal">×</button>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close dialog"
+            @click="closeModal"
+          >
+            ×
+          </button>
 
-          <h3>Your Coupon Code</h3>
+          <h3 id="coupon-modal-title">Your Coupon Code</h3>
 
-          <div v-if="loading" class="loading">
+          <div v-if="loading" class="loading" aria-live="polite">
             Generating coupon…
           </div>
 
-          <div v-else-if="coupon" class="coupon-container">
+          <div v-else-if="coupon" class="coupon-container" aria-live="polite">
             <p class="code">{{ coupon }}</p>
-            <div class="copy-box" @click="copyToClipboard">
+            <button
+              type="button"
+              class="copy-box"
+              :aria-label="copied ? 'Coupon code copied' : 'Copy coupon code'"
+              @click="copyToClipboard"
+            >
               <span v-if="!copied">📋 Copy Code</span>
               <span v-else>✅ Copied!</span>
-            </div>
+            </button>
             <p class="hint">Show this code at Santosh Optical</p>
           </div>
 
-          <div v-else class="loading">
+          <div v-else class="loading" aria-live="polite">
             Unable to generate coupon
           </div>
         </div>
@@ -146,12 +171,21 @@ const getOrCreateCoupon = async () => {
   background: #000;
   color: #fff;
   padding: 14px 20px;
+  border: none;
   border-radius: 30px;
   cursor: pointer;
   z-index: 99999;
   font-family: Arial, sans-serif;
   font-size: 14px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.coupon-float:focus-visible,
+.close:focus-visible,
+.copy-box:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
 }
 
 /* Overlay */
@@ -214,6 +248,7 @@ const getOrCreateCoupon = async () => {
   color: #fff;
   display: inline-block;
   padding: 6px 12px;
+  border: none;
   border-radius: 4px;
   margin-bottom: 15px;
   transition: all 0.3s;
