@@ -19,7 +19,7 @@
         aria-modal="true"
         aria-labelledby="coupon-modal-title"
         @click.self="closeModal"
-        @keydown.esc="closeModal"
+        @keydown.window.esc="closeModal"
       >
         <div class="coupon-modal">
           <button
