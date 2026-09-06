@@ -1,10 +1,6 @@
 [build]
-  command = "pnpm generate"
+  command = "npm run generate"
   publish = ".output/public"
-
-[build.environment]
-  NODE_VERSION = "20"
-  PNPM_VERSION = "10.30.3"
 
 [[redirects]]
   from = "/*"
