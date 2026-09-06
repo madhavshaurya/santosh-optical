@@ -166,7 +166,8 @@ const updateStatus = async (status) => {
     .eq('coupon_code', couponData.value.coupon_code)
 
   if (error) {
-    message.value = `Error updating coupon: ${error.message}`
+    console.error('Error updating coupon status:', error)
+    message.value = 'Failed to update coupon status. Please try again.'
     messageType.value = 'error'
   } else {
     couponData.value.is_used = status
