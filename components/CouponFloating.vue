@@ -61,7 +61,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 
 /* -----------------------------
    State
@@ -74,6 +74,12 @@ const copied = ref(false)
 let supabase = null
 let browserUUID = null
 
+const handleKeydown = (e) => {
+  if (e.key === 'Escape' && showModal.value) {
+    closeModal()
+  }
+}
+
 /* -----------------------------
    Client-only init
 ------------------------------ */
@@ -85,6 +91,12 @@ onMounted(() => {
     browserUUID = crypto.randomUUID()
     localStorage.setItem('coupon_uuid', browserUUID)
   }
+
+  window.addEventListener('keydown', handleKeydown)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeydown)
 })
 
 /* -----------------------------
